@@ -8,22 +8,15 @@
 import UIKit
 import Combine
 
-protocol ViewModel {
-    
-}
-
-protocol Bindable {
-    func bind()
-}
-
 class MealListViewController: UIViewController {
     
     private let cellIdentifier = "cell"
-    private let viewModel: MealListViewModel
     private var subscriptions = Set<AnyCancellable>()
-        
-    private let tapRowPublisher = PassthroughSubject<Int, Never>()
-    private let viewLoadedPublisher = PassthroughSubject<Void, Never>()
+
+    private let viewModel: MealListViewModel
+    
+    private let viewModelInput = MealListViewModelInput()
+    private var meals: [Meal] = []
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -47,7 +40,18 @@ class MealListViewController: UIViewController {
         super.viewDidLoad()
         self.bind()
         self.setupView()
-        self.viewLoadedPublisher.send()
+        self.viewModelInput.viewLoadedPublisher.send()
+    }
+    
+    func bind() {
+        let output = self.viewModel.bind(input: self.viewModelInput)
+        output.mealsPublisher.sink { error in
+            self.showError()
+        } receiveValue: { meals in
+            self.meals = meals
+            self.tableView.reloadData()
+        }
+        .store(in: &subscriptions)
     }
     
     private func setupView() {
@@ -59,34 +63,32 @@ class MealListViewController: UIViewController {
             self.tableView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor),
         ])
     }
-}
-
-extension MealListViewController: Bindable {
     
-    func bind() {
-        self.viewModel.bind(input: MealListViewModelInput(viewLoadedPublisher: self.viewLoadedPublisher.eraseToAnyPublisher(), tapRowPublisher: self.tapRowPublisher.eraseToAnyPublisher()))
-
-        self.viewModel.mealsPublisher.sink { meals in
-            self.tableView.reloadData()
-        }.store(in: &subscriptions)
+    private func showError() {
+        let alertController = UIAlertController(title: "Error", message: "There was an error", preferredStyle: .alert)
+        let action = UIAlertAction(title: "Retry", style: .default) { _ in
+            self.viewModelInput.retryPublisher.send()
+        }
+        alertController.addAction(action)
+        self.present(alertController, animated: true, completion: nil)
     }
 }
 
 extension MealListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.viewModel.meals.count
+        return self.meals.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier) ?? UITableViewCell()
-        let meal = self.viewModel.meals[indexPath.row]
+        let meal = self.meals[indexPath.row]
         cell.textLabel?.text = meal.name
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        self.tapRowPublisher.send(indexPath.row)
+        viewModelInput.tapRowPublisher.send(indexPath.row)
     }
 }
 

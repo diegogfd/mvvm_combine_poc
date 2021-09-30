@@ -19,6 +19,7 @@
 		E3BE85452704EBD1000B624A /* MVVMCombinePOCUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85442704EBD1000B624A /* MVVMCombinePOCUITests.swift */; };
 		E3BE85532704F5B1000B624A /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85522704F5B1000B624A /* MealListViewModel.swift */; };
 		E3BE85562705026C000B624A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85552705026C000B624A /* Meal.swift */; };
+		E3BE855E2706173F000B624A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE855D2706173F000B624A /* Bindable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		E3BE85462704EBD1000B624A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E3BE85522704F5B1000B624A /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		E3BE85552705026C000B624A /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		E3BE855D2706173F000B624A /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,14 +143,15 @@
 		E3BE85212704EBCF000B624A /* MVVMCombinePOC */ = {
 			isa = PBXGroup;
 			children = (
+				E3BE855B27061724000B624A /* Protocols */,
+				E3BE855827060E5B000B624A /* View */,
+				E3BE855727060E51000B624A /* View model */,
 				E3BE85542705025E000B624A /* Model */,
 				E3BE85222704EBCF000B624A /* AppDelegate.swift */,
 				E3BE85242704EBCF000B624A /* SceneDelegate.swift */,
-				E3BE85262704EBCF000B624A /* MealListViewController.swift */,
 				E3BE852B2704EBD1000B624A /* Assets.xcassets */,
 				E3BE852D2704EBD1000B624A /* LaunchScreen.storyboard */,
 				E3BE85302704EBD1000B624A /* Info.plist */,
-				E3BE85522704F5B1000B624A /* MealListViewModel.swift */,
 			);
 			path = MVVMCombinePOC;
 			sourceTree = "<group>";
@@ -177,6 +180,30 @@
 				E3BE85552705026C000B624A /* Meal.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		E3BE855727060E51000B624A /* View model */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE85522704F5B1000B624A /* MealListViewModel.swift */,
+			);
+			path = "View model";
+			sourceTree = "<group>";
+		};
+		E3BE855827060E5B000B624A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE85262704EBCF000B624A /* MealListViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		E3BE855B27061724000B624A /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE855D2706173F000B624A /* Bindable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -417,6 +444,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3BE85562705026C000B624A /* Meal.swift in Sources */,
+				E3BE855E2706173F000B624A /* Bindable.swift in Sources */,
 				E3BE85272704EBCF000B624A /* MealListViewController.swift in Sources */,
 				E3BE85232704EBCF000B624A /* AppDelegate.swift in Sources */,
 				E3BE85532704F5B1000B624A /* MealListViewModel.swift in Sources */,
