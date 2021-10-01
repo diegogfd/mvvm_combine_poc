@@ -19,7 +19,15 @@ struct MealListViewModelOutput {
     let mealsPublisher = PassthroughSubject<[Meal], AFError>()
 }
 
-class MealListViewModel: Bindable {
+protocol MealListViewModelProtocol {
+    func bind(input: MealListViewModelInput) -> MealListViewModelOutput
+}
+
+//protocol MealListViewModelProtocol: Bindable where Input == MealListViewModelInput, Output == MealListViewModelOutput{
+//
+//}
+
+class MealListViewModel: MealListViewModelProtocol {
     
     private var subscriptions = Set<AnyCancellable>()
     private let output = MealListViewModelOutput()
@@ -42,16 +50,29 @@ class MealListViewModel: Bindable {
     }
     
     private func fetch() {
-        AF.request("https://www.themealdb.com/api/json/v1/1/search.php?f=a").responseDecodable(of: MealsResponse.self) {response in
-            switch response.result {
-            case .success(let mealsResponse):
-                self.output.mealsPublisher.send(mealsResponse.meals)
-                break
-            case .failure(let error):
-                self.output.mealsPublisher.send(completion: .failure(error))
-                break
+        AF.request("https://www.themealdb.com/api/json/v1/1/search.php?f=a").publishDecodable(type: MealsResponse.self)
+            .sink { [weak self] response in
+               switch response.result {
+                case .success(let mealsResponse):
+                    self?.output.mealsPublisher.send(mealsResponse.meals)
+                    break
+                case .failure(let error):
+                    self?.output.mealsPublisher.send(completion: .failure(error))
+                    break
+                }
             }
-        }
+            .store(in: &subscriptions)
+        
+//        AF.request("https://www.themealdb.com/api/json/v1/1/search.php?f=a").responseDecodable(of: MealsResponse.self) {response in
+//            switch response.result {
+//            case .success(let mealsResponse):
+//                self.output.mealsPublisher.send(mealsResponse.meals)
+//                break
+//            case .failure(let error):
+//                self.output.mealsPublisher.send(completion: .failure(error))
+//                break
+//            }
+//        }
     }
     
     private func goToNextScreen() {

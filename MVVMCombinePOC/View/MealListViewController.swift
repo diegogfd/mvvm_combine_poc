@@ -13,7 +13,7 @@ class MealListViewController: UIViewController {
     private let cellIdentifier = "cell"
     private var subscriptions = Set<AnyCancellable>()
 
-    private let viewModel: MealListViewModel
+    private let viewModel: MealListViewModelProtocol
     
     private let viewModelInput = MealListViewModelInput()
     private var meals: [Meal] = []
@@ -27,7 +27,7 @@ class MealListViewController: UIViewController {
         return tableView
     }()
     
-    init(viewModel: MealListViewModel = MealListViewModel()) {
+    init(viewModel: MealListViewModelProtocol = MealListViewModel()) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

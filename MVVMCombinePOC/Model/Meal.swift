@@ -7,6 +7,23 @@
 
 import Foundation
 
+struct MealsResponse: Codable {
+    let meals: [Meal]
+}
+
+struct Meal: Codable {
+    let name: String
+    let instructions: String
+    let thumbnailURL: String
+    
+    private enum CodingKeys: String, CodingKey{
+        case name = "strMeal"
+        case instructions = "strInstructions"
+        case thumbnailURL = "strMealThumb"
+    }
+    
+}
+
 //{
 //  "meals": [
 //    {
@@ -231,20 +248,3 @@ import Foundation
 //    }
 //  ]
 //}
-
-struct MealsResponse: Codable {
-    let meals: [Meal]
-}
-
-struct Meal: Codable {
-    let name: String
-    let instructions: String
-    let thumbnailURL: String
-    
-    private enum CodingKeys: String, CodingKey{
-        case name = "strMeal"
-        case instructions = "strInstructions"
-        case thumbnailURL = "strMealThumb"
-    }
-    
-}
