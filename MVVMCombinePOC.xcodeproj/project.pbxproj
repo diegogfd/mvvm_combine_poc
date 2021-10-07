@@ -20,6 +20,10 @@
 		E3BE85532704F5B1000B624A /* MealListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85522704F5B1000B624A /* MealListViewModel.swift */; };
 		E3BE85562705026C000B624A /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85552705026C000B624A /* Meal.swift */; };
 		E3BE855E2706173F000B624A /* Bindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE855D2706173F000B624A /* Bindable.swift */; };
+		E3BE8565270E1BE0000B624A /* GetMoviesUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE8564270E1BE0000B624A /* GetMoviesUseCase.swift */; };
+		E3BE8568270E3975000B624A /* MealsRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE8567270E3975000B624A /* MealsRepository.swift */; };
+		E3BE856C270E4194000B624A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE856A270E4194000B624A /* Network.swift */; };
+		E3BE856D270E4194000B624A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE856B270E4194000B624A /* Endpoint.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +69,10 @@
 		E3BE85522704F5B1000B624A /* MealListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListViewModel.swift; sourceTree = "<group>"; };
 		E3BE85552705026C000B624A /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
 		E3BE855D2706173F000B624A /* Bindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bindable.swift; sourceTree = "<group>"; };
+		E3BE8564270E1BE0000B624A /* GetMoviesUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoviesUseCase.swift; sourceTree = "<group>"; };
+		E3BE8567270E3975000B624A /* MealsRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsRepository.swift; sourceTree = "<group>"; };
+		E3BE856A270E4194000B624A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		E3BE856B270E4194000B624A /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +151,9 @@
 		E3BE85212704EBCF000B624A /* MVVMCombinePOC */ = {
 			isa = PBXGroup;
 			children = (
+				E3BE8569270E4182000B624A /* Core */,
+				E3BE8566270E1C99000B624A /* Repositories */,
+				E3BE8563270E1BA7000B624A /* Use cases */,
 				E3BE855B27061724000B624A /* Protocols */,
 				E3BE855827060E5B000B624A /* View */,
 				E3BE855727060E51000B624A /* View model */,
@@ -204,6 +215,31 @@
 				E3BE855D2706173F000B624A /* Bindable.swift */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		E3BE8563270E1BA7000B624A /* Use cases */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE8564270E1BE0000B624A /* GetMoviesUseCase.swift */,
+			);
+			path = "Use cases";
+			sourceTree = "<group>";
+		};
+		E3BE8566270E1C99000B624A /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE8567270E3975000B624A /* MealsRepository.swift */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		E3BE8569270E4182000B624A /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				E3BE856B270E4194000B624A /* Endpoint.swift */,
+				E3BE856A270E4194000B624A /* Network.swift */,
+			);
+			path = Core;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -445,8 +481,12 @@
 			files = (
 				E3BE85562705026C000B624A /* Meal.swift in Sources */,
 				E3BE855E2706173F000B624A /* Bindable.swift in Sources */,
+				E3BE8568270E3975000B624A /* MealsRepository.swift in Sources */,
 				E3BE85272704EBCF000B624A /* MealListViewController.swift in Sources */,
+				E3BE856D270E4194000B624A /* Endpoint.swift in Sources */,
 				E3BE85232704EBCF000B624A /* AppDelegate.swift in Sources */,
+				E3BE856C270E4194000B624A /* Network.swift in Sources */,
+				E3BE8565270E1BE0000B624A /* GetMoviesUseCase.swift in Sources */,
 				E3BE85532704F5B1000B624A /* MealListViewModel.swift in Sources */,
 				E3BE85252704EBCF000B624A /* SceneDelegate.swift in Sources */,
 			);
