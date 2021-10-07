@@ -14,15 +14,15 @@ enum MealListError: Error {
     case unknown
 }
 
-protocol MealsRepositoryProtocol {
+protocol GetMealsRepositoryProtocol {
     func getMeals() -> AnyPublisher<[Meal],MealListError>
 }
 
-class MealsRepository: MealsRepositoryProtocol {
+class GetMealsRepository: GetMealsRepositoryProtocol {
     
     private let network: NetworkProtocol
     
-    init(network: NetworkProtocol) {
+    init(network: NetworkProtocol = Network()) {
         self.network = network
     }
     
@@ -41,6 +41,9 @@ class MealsRepository: MealsRepositoryProtocol {
                 default:
                     return .unknown
                 }
-            }.eraseToAnyPublisher()
+            }
+            .subscribe(on: DispatchQueue.global())
+            .receive(on: DispatchQueue.main)
+            .eraseToAnyPublisher()
     }
 }

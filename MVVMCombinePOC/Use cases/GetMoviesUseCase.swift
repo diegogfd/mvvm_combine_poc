@@ -8,15 +8,15 @@
 import Foundation
 import Combine
 
-protocol MealListUseCaseProtocol {
+protocol GetMealListUseCaseProtocol {
     func getMeals() -> AnyPublisher<[Meal],MealListError>
 }
 
-class MealListUseCase: MealListUseCaseProtocol {
+class GetMealListUseCase: GetMealListUseCaseProtocol {
     
-    private let repository: MealsRepositoryProtocol
+    private let repository: GetMealsRepositoryProtocol
     
-    init(repository: MealsRepositoryProtocol) {
+    init(repository: GetMealsRepositoryProtocol = GetMealsRepository()) {
         self.repository = repository
     }
     
