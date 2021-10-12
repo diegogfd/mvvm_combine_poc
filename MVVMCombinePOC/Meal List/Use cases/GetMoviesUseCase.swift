@@ -16,7 +16,7 @@ class GetMealListUseCase: GetMealListUseCaseProtocol {
     
     private let repository: GetMealsRepositoryProtocol
     
-    init(repository: GetMealsRepositoryProtocol = GetMealsRepository()) {
+    init(repository: GetMealsRepositoryProtocol) {
         self.repository = repository
     }
     

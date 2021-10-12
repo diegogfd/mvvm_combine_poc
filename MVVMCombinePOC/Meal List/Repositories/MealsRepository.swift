@@ -22,7 +22,7 @@ class GetMealsRepository: GetMealsRepositoryProtocol {
     
     private let network: NetworkProtocol
     
-    init(network: NetworkProtocol = Network()) {
+    init(network: NetworkProtocol) {
         self.network = network
     }
     

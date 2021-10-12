@@ -30,7 +30,7 @@ class MealListViewModel: MealListViewModelProtocol {
     @Published var meals: [Meal] = []
     private let getMealListUseCase: GetMealListUseCaseProtocol
     
-    init(getMealListUseCase: GetMealListUseCaseProtocol = GetMealListUseCase()) {
+    init(getMealListUseCase: GetMealListUseCaseProtocol) {
         self.getMealListUseCase = getMealListUseCase
     }
     

@@ -27,7 +27,7 @@ class MealListViewController: UIViewController {
         return tableView
     }()
     
-    init(viewModel: MealListViewModelProtocol = MealListViewModel()) {
+    init(viewModel: MealListViewModelProtocol) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
