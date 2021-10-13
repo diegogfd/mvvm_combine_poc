@@ -6,13 +6,10 @@
 //
 
 import Foundation
+import UIKit
 
-protocol MealListSceneBuilderProtocol {
-    func build() -> MealListViewController
-}
-
-class MealListSceneBuilder: MealListSceneBuilderProtocol {
-    func build() -> MealListViewController {
+class MealListSceneBuilder: SceneBuilder {
+    func build(params: [String : Any]) -> UIViewController {
         let repository = GetMealsRepository(network: Network())
         let useCase = GetMealListUseCase(repository: repository)
         let viewModel = MealListViewModel(getMealListUseCase: useCase)
