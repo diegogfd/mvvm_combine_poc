@@ -10,15 +10,15 @@ import UIKit
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var appCoordinator: AppCoordinator?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         Router.shared.register(routingInfo: MealRouting())
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        guard let mealList = Router.shared.getViewController(for: "kavak://meal/list") else { return }
-        window?.rootViewController = UINavigationController(rootViewController: mealList)
-        window?.makeKeyAndVisible()
+        self.appCoordinator = AppCoordinator(window: window!)
+        self.appCoordinator?.start()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {

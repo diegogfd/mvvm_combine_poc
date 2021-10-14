@@ -28,6 +28,9 @@
 		E3BE85752715CC7C000B624A /* RoutingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85742715CC7C000B624A /* RoutingInfo.swift */; };
 		E3BE857727161163000B624A /* SceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857627161163000B624A /* SceneBuilder.swift */; };
 		E3BE857927171C5D000B624A /* MealRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857827171C5D000B624A /* MealRouting.swift */; };
+		E3BE857C2718831F000B624A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857B2718831F000B624A /* Coordinator.swift */; };
+		E3BE857E27188352000B624A /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857D27188352000B624A /* AppCoordinator.swift */; };
+		E3BE858027188392000B624A /* MealsCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857F27188392000B624A /* MealsCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -81,6 +84,9 @@
 		E3BE85742715CC7C000B624A /* RoutingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingInfo.swift; sourceTree = "<group>"; };
 		E3BE857627161163000B624A /* SceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuilder.swift; sourceTree = "<group>"; };
 		E3BE857827171C5D000B624A /* MealRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRouting.swift; sourceTree = "<group>"; };
+		E3BE857B2718831F000B624A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		E3BE857D27188352000B624A /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		E3BE857F27188392000B624A /* MealsCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealsCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +264,9 @@
 				E3BE857627161163000B624A /* SceneBuilder.swift */,
 				E3BE85712715BBF4000B624A /* Router.swift */,
 				E3BE85742715CC7C000B624A /* RoutingInfo.swift */,
+				E3BE857B2718831F000B624A /* Coordinator.swift */,
+				E3BE857D27188352000B624A /* AppCoordinator.swift */,
+				E3BE857F27188392000B624A /* MealsCoordinator.swift */,
 			);
 			path = Routing;
 			sourceTree = "<group>";
@@ -509,9 +518,12 @@
 			files = (
 				E3BE85722715BBF4000B624A /* Router.swift in Sources */,
 				E3BE85562705026C000B624A /* Meal.swift in Sources */,
+				E3BE857C2718831F000B624A /* Coordinator.swift in Sources */,
 				E3BE8568270E3975000B624A /* MealsRepository.swift in Sources */,
+				E3BE857E27188352000B624A /* AppCoordinator.swift in Sources */,
 				E3BE85272704EBCF000B624A /* MealListViewController.swift in Sources */,
 				E3BE85752715CC7C000B624A /* RoutingInfo.swift in Sources */,
+				E3BE858027188392000B624A /* MealsCoordinator.swift in Sources */,
 				E3BE856D270E4194000B624A /* Endpoint.swift in Sources */,
 				E3BE85232704EBCF000B624A /* AppDelegate.swift in Sources */,
 				E3BE857927171C5D000B624A /* MealRouting.swift in Sources */,

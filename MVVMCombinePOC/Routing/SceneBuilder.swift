@@ -9,5 +9,6 @@ import Foundation
 import UIKit
 
 public protocol SceneBuilder {
+    func build(params: [String : Any], coordinator: Coordinator) -> UIViewController
     func build(params: [String : Any]) -> UIViewController
 }

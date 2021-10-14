@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-class MealListSceneBuilder: SceneBuilder {
+class MealListSceneBuilder {
     
-    func build(params: [String : Any]) -> UIViewController {
+    func build(coordinator: MealListCoordinator) -> UIViewController {
         let repository = GetMealsRepository(network: Network())
         let useCase = GetMealListUseCase(repository: repository)
         let viewModel = MealListViewModel(getMealListUseCase: useCase)
-        let viewController = MealListViewController(viewModel: viewModel)
+        let viewController = MealListViewController(viewModel: viewModel, coordinator: coordinator)
         return viewController
     }
 }

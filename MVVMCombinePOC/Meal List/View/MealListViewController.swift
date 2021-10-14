@@ -17,6 +17,8 @@ class MealListViewController: UIViewController {
     
     private let viewModelInput = MealListViewModelInput()
     private var meals: [Meal] = []
+    
+    var coordinator: MealListCoordinatorProtocol
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -27,8 +29,9 @@ class MealListViewController: UIViewController {
         return tableView
     }()
     
-    init(viewModel: MealListViewModelProtocol) {
+    init(viewModel: MealListViewModelProtocol, coordinator: MealListCoordinatorProtocol) {
         self.viewModel = viewModel
+        self.coordinator = coordinator
         super.init(nibName: nil, bundle: nil)
     }
     

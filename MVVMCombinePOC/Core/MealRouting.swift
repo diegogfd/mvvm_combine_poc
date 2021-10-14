@@ -9,5 +9,5 @@ import Foundation
 
 struct MealRouting: RoutingInfo {   
     var host: String = "meal"
-    var mapping: [String : SceneBuilder] = ["list" : MealListSceneBuilder()]
+    var mapping: [String : SceneBuilder] = [:]//["list" : MealListSceneBuilder()]
 }
