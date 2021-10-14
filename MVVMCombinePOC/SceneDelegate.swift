@@ -12,13 +12,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     var window: UIWindow?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        let routingInfo = RoutingInfo(host: "example")
-        routingInfo.register(builder: MealListSceneBuilder(), to: "meal_list")
-        Router.shared.register(routingInfo: routingInfo)
+        Router.shared.register(routingInfo: MealRouting())
         guard let windowScene = (scene as? UIWindowScene) else { return }
         window = UIWindow(frame: windowScene.coordinateSpace.bounds)
         window?.windowScene = windowScene
-        guard let mealList = Router.shared.getViewController(for: "kavak://example/meal_list") else { return }
+        guard let mealList = Router.shared.getViewController(for: "kavak://meal/list") else { return }
         window?.rootViewController = UINavigationController(rootViewController: mealList)
         window?.makeKeyAndVisible()
     }

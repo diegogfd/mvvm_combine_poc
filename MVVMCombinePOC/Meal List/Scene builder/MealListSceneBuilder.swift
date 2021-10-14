@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 class MealListSceneBuilder: SceneBuilder {
+    
     func build(params: [String : Any]) -> UIViewController {
         let repository = GetMealsRepository(network: Network())
         let useCase = GetMealListUseCase(repository: repository)
