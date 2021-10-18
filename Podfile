@@ -8,6 +8,7 @@ target 'MVVMCombinePOC' do
   # Pods for MVVMCombinePOC
 
   pod 'Alamofire'
+  pod 'Kingfisher'
 
   target 'MVVMCombinePOCTests' do
     inherit! :search_paths

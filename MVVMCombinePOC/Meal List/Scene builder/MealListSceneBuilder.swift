@@ -10,7 +10,7 @@ import UIKit
 
 class MealListSceneBuilder {
     
-    func build(coordinator: MealListCoordinator) -> UIViewController {
+    func build(coordinator: MealListCoordinator) -> MealListViewController {
         let repository = GetMealsRepository(network: Network())
         let useCase = GetMealListUseCase(repository: repository)
         let viewModel = MealListViewModel(getMealListUseCase: useCase)

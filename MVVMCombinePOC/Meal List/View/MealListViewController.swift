@@ -7,16 +7,17 @@
 
 import UIKit
 import Combine
+import Kingfisher
 
 class MealListViewController: UIViewController {
     
     private let cellIdentifier = "cell"
     private var subscriptions = Set<AnyCancellable>()
 
-    private let viewModel: MealListViewModelProtocol
+    let viewModel: MealListViewModelProtocol
     
     private let viewModelInput = MealListViewModelInput()
-    private var meals: [Meal] = []
+    private var mealViewModels: [MealListCellData] = []
     
     var coordinator: MealListCoordinatorProtocol
 
@@ -25,7 +26,7 @@ class MealListViewController: UIViewController {
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.cellIdentifier)
+        tableView.register(MealListItemCell.self, forCellReuseIdentifier: self.cellIdentifier)
         return tableView
     }()
     
@@ -51,7 +52,7 @@ class MealListViewController: UIViewController {
         output.mealsPublisher.sink { error in
             self.showError()
         } receiveValue: { meals in
-            self.meals = meals
+            self.mealViewModels = meals
             self.tableView.reloadData()
         }
         .store(in: &subscriptions)
@@ -80,13 +81,15 @@ class MealListViewController: UIViewController {
 extension MealListViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.meals.count
+        return self.mealViewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier) ?? UITableViewCell()
-        let meal = self.meals[indexPath.row]
-        cell.textLabel?.text = meal.name
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: self.cellIdentifier) as? MealListItemCell else {
+            return UITableViewCell()
+        }
+        let mealViewModel = self.mealViewModels[indexPath.row]
+        cell.setup(viewModel: mealViewModel)
         return cell
     }
     

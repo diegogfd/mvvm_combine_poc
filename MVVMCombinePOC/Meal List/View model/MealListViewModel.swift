@@ -16,19 +16,21 @@ struct MealListViewModelInput {
 }
 
 struct MealListViewModelOutput {
-    let mealsPublisher = PassthroughSubject<[Meal], MealListError>()
+    let mealsPublisher = PassthroughSubject<[MealListCellData], MealListError>()
+    let selectedMealPublisher = PassthroughSubject<Meal, Never>()
 }
 
 protocol MealListViewModelProtocol {
     func bind(input: MealListViewModelInput) -> MealListViewModelOutput
+    var output: MealListViewModelOutput { get }
 }
 
 class MealListViewModel: MealListViewModelProtocol {
     
     private var subscriptions = Set<AnyCancellable>()
-    private let output = MealListViewModelOutput()
-    @Published var meals: [Meal] = []
+    let output = MealListViewModelOutput()
     private let getMealListUseCase: GetMealListUseCaseProtocol
+    private var meals: [Meal] = []
     
     init(getMealListUseCase: GetMealListUseCaseProtocol) {
         self.getMealListUseCase = getMealListUseCase
@@ -41,7 +43,7 @@ class MealListViewModel: MealListViewModelProtocol {
         .store(in: &self.subscriptions)
         
         input.tapRowPublisher.sink { [weak self] row in
-            self?.goToNextScreen()
+            self?.goToNextScreen(mealIndex: row)
         }.store(in: &self.subscriptions)
         
         input.retryPublisher.sink { [weak self] in
@@ -57,13 +59,18 @@ class MealListViewModel: MealListViewModelProtocol {
                 self?.output.mealsPublisher.send(completion: .failure(error))
             }
         } receiveValue: { [weak self] meals in
-            self?.output.mealsPublisher.send(meals)
+            self?.meals = meals
+            let mealModels = meals.map { MealListCellData(meal: $0)}
+            self?.output.mealsPublisher.send(mealModels)
         }
         .store(in: &subscriptions)
     }
     
-    private func goToNextScreen() {
-        print("GO TO NEXT SCREEN")
+    private func goToNextScreen(mealIndex: Int) {
+        guard mealIndex >= 0, mealIndex < self.meals.count else {
+            return
+        }
+        self.output.selectedMealPublisher.send(self.meals[mealIndex])
     }
     
 }

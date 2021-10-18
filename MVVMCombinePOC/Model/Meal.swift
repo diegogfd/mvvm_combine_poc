@@ -12,11 +12,13 @@ struct MealsResponse: Codable {
 }
 
 struct Meal: Codable {
+    let id: String
     let name: String
     let instructions: String
     let thumbnailURL: String
     
     private enum CodingKeys: String, CodingKey{
+        case id = "idMeal"
         case name = "strMeal"
         case instructions = "strInstructions"
         case thumbnailURL = "strMealThumb"

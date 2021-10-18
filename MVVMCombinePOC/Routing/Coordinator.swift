@@ -7,13 +7,15 @@
 
 import Foundation
 
-public protocol Coordinator {
+public protocol Coordinator: AnyObject {
+    var childCoordinators: [Coordinator] { get set }
     func start()
     func coordinate(to coordinator: Coordinator)
 }
 
 public extension Coordinator {
     func coordinate(to coordinator: Coordinator) {
+        childCoordinators.append(coordinator)
         coordinator.start()
     }
 }
