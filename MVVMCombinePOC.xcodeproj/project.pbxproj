@@ -24,10 +24,6 @@
 		E3BE856C270E4194000B624A /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE856A270E4194000B624A /* Network.swift */; };
 		E3BE856D270E4194000B624A /* Endpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE856B270E4194000B624A /* Endpoint.swift */; };
 		E3BE85702715AABC000B624A /* MealListSceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE856F2715AABC000B624A /* MealListSceneBuilder.swift */; };
-		E3BE85722715BBF4000B624A /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85712715BBF4000B624A /* Router.swift */; };
-		E3BE85752715CC7C000B624A /* RoutingInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85742715CC7C000B624A /* RoutingInfo.swift */; };
-		E3BE857727161163000B624A /* SceneBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857627161163000B624A /* SceneBuilder.swift */; };
-		E3BE857927171C5D000B624A /* MealRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857827171C5D000B624A /* MealRouting.swift */; };
 		E3BE857C2718831F000B624A /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857B2718831F000B624A /* Coordinator.swift */; };
 		E3BE858027188392000B624A /* MealListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE857F27188392000B624A /* MealListCoordinator.swift */; };
 		E3BE85882718AC3A000B624A /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3BE85872718AC3A000B624A /* TabBarCoordinator.swift */; };
@@ -96,10 +92,6 @@
 		E3BE856A270E4194000B624A /* Network.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		E3BE856B270E4194000B624A /* Endpoint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		E3BE856F2715AABC000B624A /* MealListSceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListSceneBuilder.swift; sourceTree = "<group>"; };
-		E3BE85712715BBF4000B624A /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
-		E3BE85742715CC7C000B624A /* RoutingInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingInfo.swift; sourceTree = "<group>"; };
-		E3BE857627161163000B624A /* SceneBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneBuilder.swift; sourceTree = "<group>"; };
-		E3BE857827171C5D000B624A /* MealRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealRouting.swift; sourceTree = "<group>"; };
 		E3BE857B2718831F000B624A /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		E3BE857F27188392000B624A /* MealListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealListCoordinator.swift; sourceTree = "<group>"; };
 		E3BE85872718AC3A000B624A /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
@@ -208,7 +200,6 @@
 				E3BE852B2704EBD1000B624A /* Assets.xcassets */,
 				E3BE852D2704EBD1000B624A /* LaunchScreen.storyboard */,
 				E3BE85302704EBD1000B624A /* Info.plist */,
-				E3BE85732715CC64000B624A /* Routing */,
 			);
 			path = MVVMCombinePOC;
 			sourceTree = "<group>";
@@ -276,9 +267,9 @@
 		E3BE8569270E4182000B624A /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				E3BE857B2718831F000B624A /* Coordinator.swift */,
 				E3BE856B270E4194000B624A /* Endpoint.swift */,
 				E3BE856A270E4194000B624A /* Network.swift */,
-				E3BE857827171C5D000B624A /* MealRouting.swift */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -294,17 +285,6 @@
 				E3BE855727060E51000B624A /* View model */,
 			);
 			path = "Meal List";
-			sourceTree = "<group>";
-		};
-		E3BE85732715CC64000B624A /* Routing */ = {
-			isa = PBXGroup;
-			children = (
-				E3BE857627161163000B624A /* SceneBuilder.swift */,
-				E3BE85712715BBF4000B624A /* Router.swift */,
-				E3BE85742715CC7C000B624A /* RoutingInfo.swift */,
-				E3BE857B2718831F000B624A /* Coordinator.swift */,
-			);
-			path = Routing;
 			sourceTree = "<group>";
 		};
 		E3BE857A271737A0000B624A /* Scene builder */ = {
@@ -709,7 +689,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E3BE859D2718B069000B624A /* HomeViewController.swift in Sources */,
-				E3BE85722715BBF4000B624A /* Router.swift in Sources */,
 				E3BE85562705026C000B624A /* Meal.swift in Sources */,
 				E3BE857C2718831F000B624A /* Coordinator.swift in Sources */,
 				E3BE85B3271A3472000B624A /* MealDetailViewData.swift in Sources */,
@@ -717,14 +696,12 @@
 				E3BE85A02718D8EB000B624A /* MealListCellData.swift in Sources */,
 				E3BE85272704EBCF000B624A /* MealListViewController.swift in Sources */,
 				E3BE85B7271A37FD000B624A /* MealDetailSceneBuilder.swift in Sources */,
-				E3BE85752715CC7C000B624A /* RoutingInfo.swift in Sources */,
 				E3BE858027188392000B624A /* MealListCoordinator.swift in Sources */,
 				E3BE856D270E4194000B624A /* Endpoint.swift in Sources */,
 				E3BE85232704EBCF000B624A /* AppDelegate.swift in Sources */,
 				E3BE85B5271A37D3000B624A /* MealDetailCoordinator.swift in Sources */,
 				E3BE85972718AF97000B624A /* HomeRepository.swift in Sources */,
 				E3BE858A2718AC5D000B624A /* TabBarController.swift in Sources */,
-				E3BE857927171C5D000B624A /* MealRouting.swift in Sources */,
 				E3BE85702715AABC000B624A /* MealListSceneBuilder.swift in Sources */,
 				E3BE856C270E4194000B624A /* Network.swift in Sources */,
 				E3BE8565270E1BE0000B624A /* GetMealListUseCase.swift in Sources */,
@@ -735,7 +712,6 @@
 				E3BE859B2718B018000B624A /* HomeViewModel.swift in Sources */,
 				E3BE85932718AEE8000B624A /* HomeCoordinator.swift in Sources */,
 				E3BE85B1271A324B000B624A /* MealDetailRepository.swift in Sources */,
-				E3BE857727161163000B624A /* SceneBuilder.swift in Sources */,
 				E3BE85A22718E55E000B624A /* MealListItemCell.swift in Sources */,
 				E3BE85992718AFCD000B624A /* HomeUseCase.swift in Sources */,
 				E3BE85AD271A31DF000B624A /* MealDetailViewModel.swift in Sources */,
